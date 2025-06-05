@@ -4,7 +4,7 @@
 # © 2025 hagre1 <hagre1@pm.me>
 # Repository: https://github.com/hagre1/linux-org-helpers
 # License: Apache License 2.0 (see LICENSE)
-# Version: 250605+1L-0-0 (reverse-date+classical-versioning with S/M/L indicating the last change and its impact)
+# Version: 20250605-1L-0-0
 #
 
 

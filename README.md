@@ -39,3 +39,19 @@ Helpers to improve Linux experience
    "Edit this list#false#nohup gedit '$DIR/project-cmd-config.sh' >/dev/null 2>&1 &"
   )
   ```
+
+## Version numbers
+
+- I'm experimenting with a new versioning format for dense informative content. As I did not find any mention of this idea I call it "**Date-Impact Versioning (or DI-Versioning or  DIV)**".
+
+- Structure <code>YYYYMMDD-<Major><S|M|L>-<Minor><S|M|L>-<Patch><S|M|L></code>
+  
+  - The first part is the date in this format YYYYMMDD
+  
+  - Then follows the classical versioning with major-minor-patch, separated by dashes for better visibility (for example on websites where links are underlined and dots are hardly visible)
+  
+  - All version also have either the letter S (small), M (medium) or L (large) behind one of the version digits. This simulatenously indicates which change was the latest one and how much impact this change had. For example you could implement a breaking change and therefore would formally have to increase the major version, but in reality that's not a big deal for most users and would therefore get an S. Or you could fix a security bug, which could have a huge impact and would therefore warrant an L rating. This would be subjective, but as this would also just be informative the subjective nature is welcome
+  
+  - Contrary to most CalVer systems the date at the beginning is merely informativ but at the same time helpful when auto-sorting files in the file system
+
+- Example `20250605-1L-0-0`
