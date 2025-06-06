@@ -104,10 +104,10 @@ if [[ "$CHOICE" =~ ^[0-9]+$ ]] && (( CHOICE >= 1 && CHOICE <= ${#OPTIONS[@]} ));
   echo -e "\n===== $NAME >>> is being executed ...\n"
 
   if [[ "$USE_WINDOW" == "true" ]]; then
-    $TERMINAL_LAUNCH "bash -c '$CMD; exec bash'"
+    $TERMINAL_LAUNCH "bash -c '$CMD'"
     echo -e "\n===== $NAME >>> is being executed in a new window without work-dir."
   elif [[ -n "$USE_WINDOW" && "$USE_WINDOW" != "false" ]]; then
-    $TERMINAL_LAUNCH "bash -c 'cd \"$USE_WINDOW\" && $CMD; exec bash'"
+    $TERMINAL_LAUNCH "bash -c 'cd \"$USE_WINDOW\" && $CMD'"
     echo -e "\n===== $NAME >>> is being executed in a new window with work-dir '$USE_WINDOW'."
   else
     bash -c "$CMD"
