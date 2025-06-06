@@ -14,13 +14,13 @@ Helpers to improve Linux experience
   
   * **description** : the text that will appear in the menu when selecting this option
   
-  * newWindowFlag: can be true, false, or [path]
+  * **newWindowFlag**: can be true, false, or [path]
     
     * **true**  = open a new terminal (no custom working directory) and run the command there
     
     * **false** = execute the command in the current terminal window
     
-    * **[path]** = same as “true”, but the newly opened terminal changes to [path] before executing the command
+    * **[path]** = same as “true”, but the newly opened terminal changes to [path] before executing the command. **NOTE**: No quote-escaping of possible space characters is needed for [path] (can even lead to errors)
   
   * **command** : any valid shell command. You must take care of quoting and escaping (e.g. when to wrap in quotes or escape spaces). Refer to other sources if needed.
   

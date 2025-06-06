@@ -4,7 +4,7 @@
 # © 2025 hagre1 <hagre1@pm.me>
 # Repository: https://github.com/hagre1/linux-org-helpers
 # License: Apache License 2.0 (see LICENSE)
-# Version: 20250606-1-1S-0
+# Version: 20250606-1-1-1S
 #
 
 
@@ -32,15 +32,15 @@ trap 'on_error' ERR
 
 
 if command -v exo-open &> /dev/null; then
-  TERMINAL_LAUNCH="exo-open --launch TerminalEmulator"
+  TERMINAL_LAUNCH="exo-open --launch TerminalEmulator --command"
 elif command -v x-terminal-emulator &> /dev/null; then
-  TERMINAL_LAUNCH="x-terminal-emulator"
+  TERMINAL_LAUNCH="x-terminal-emulator -e"
 elif command -v gnome-terminal &> /dev/null; then
-  TERMINAL_LAUNCH="gnome-terminal"
+  TERMINAL_LAUNCH="gnome-terminal --"
 elif command -v konsole &> /dev/null; then
-  TERMINAL_LAUNCH="konsole"
+  TERMINAL_LAUNCH="konsole --separate -e"
 elif command -v xfce4-terminal &> /dev/null; then
-  TERMINAL_LAUNCH="xfce4-terminal"
+  TERMINAL_LAUNCH="xfce4-terminal --command"
 elif command -v xterm &> /dev/null; then
   TERMINAL_LAUNCH="xterm -e"
 else
@@ -116,11 +116,11 @@ if [[ "$CHOICE" =~ ^[0-9]+$ ]] && [[ -n "${DISPLAY_TO_INDEX[$CHOICE]}" ]]; then
   echo -e "\n===== $NAME >>> is being executed ...\n"
 
   if [[ "$USE_WINDOW" == "true" ]]; then
-    $TERMINAL_LAUNCH "bash -c '$CMD'"
     echo -e "\n===== $NAME >>> is being executed in a new window without work-dir."
+    $TERMINAL_LAUNCH "bash -c '$CMD; exec bash'"
   elif [[ -n "$USE_WINDOW" && "$USE_WINDOW" != "false" ]]; then
-    $TERMINAL_LAUNCH "bash -c 'cd \"$USE_WINDOW\" && $CMD'"
-    echo -e "\n===== $NAME >>> is being executed in a new window with work-dir '$USE_WINDOW'."
+    echo -e "\n===== $NAME >>> is being executed in a new window with work-dir '$USE_WINDOW'.\n"
+     $TERMINAL_LAUNCH "bash -c 'cd \"$USE_WINDOW\" && $CMD; exec bash'"
   else
     bash -c "$CMD"
   fi
