@@ -10,7 +10,7 @@ Helpers to improve Linux experience
 
 * Inside the **OPTIONS** array, the user can specify as many lines as they like
   
-  * each line must follow this format: **description#newWindowFlag#command**
+  * each line must follow this format: <code>"description#newWindowFlag#command"</code> OR <code>"-"</code>
   
   * **description** : the text that will appear in the menu when selecting this option
   
@@ -23,6 +23,8 @@ Helpers to improve Linux experience
     * **[path]** = same as “true”, but the newly opened terminal changes to [path] before executing the command
   
   * **command** : any valid shell command. You must take care of quoting and escaping (e.g. when to wrap in quotes or escape spaces). Refer to other sources if needed.
+  
+  * Dash <code>"-"</code> : If the user just uses dash then a line will be printed to separate options optically. This will NOT affect the choice numbers however
 
 * The user may also use the variable <code>$DIR</code> inside OPTIONS; $DIR will contain the parent directory of the config file.
 
